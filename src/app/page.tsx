@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import SearchBar from '../../components/SearchBar';
 import useBookmarks from "../../hooks/useBookmarks";
 import { FaBookmark, FaRegBookmark, FaTrash, FaSpinner,  FaBook } from "react-icons/fa";
@@ -33,7 +33,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const { bookmarks, addBookmark, removeBookmark } = useBookmarks();
   const [loading, setLoading] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  
 
   const handleSearch = async (word: string) => {
     setLoading(true); // Start loading
@@ -97,7 +97,7 @@ export default function Home() {
             {entry.phonetics.map((phonetic: Phonetic, idx: number) => (
               <div key={idx} className="mb-4">
                 {phonetic.audio && (
-                  <audio controls className="w-full">
+                     <audio controls className="w-full">
                     <source src={phonetic.audio} type="audio/mpeg" />
                     Your browser does not support the audio element.
                   </audio>
